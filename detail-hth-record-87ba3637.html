@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>华体会 · 资料索引与信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      background: #f4f5f7;
+      color: #1e1f22;
+      line-height: 1.7;
+    }
+
+    /* —— 深色头图 —— */
+    .hero {
+      background: #0b0d12;
+      padding: 4.8rem 1.5rem 3.6rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+      opacity: 0.3;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #e8edf5;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #9aa5b5;
+      max-width: 540px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .hero-meta {
+      display: inline-block;
+      font-size: 0.8rem;
+      background: #1f232b;
+      color: #8f9bb3;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    /* —— 正文区 —— */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2.8rem 1.8rem 4.5rem;
+    }
+
+    /* 卡片式段落，提升信息密度视觉 */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem 2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 6px 18px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s;
+    }
+
+    .card p {
+      margin-bottom: 1.25rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 550;
+      margin-bottom: 0.75rem;
+      color: #121317;
+      letter-spacing: -0.01em;
+      border-left: 4px solid #3b82f6;
+      padding-left: 0.85rem;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      color: #2c2e36;
+      font-weight: 400;
+    }
+
+    /* 引用/提示块 */
+    .insight {
+      background: #f0f3fa;
+      border-left: 4px solid #3b82f6;
+      padding: 1.1rem 1.5rem;
+      margin: 1.8rem 0 1.5rem;
+      border-radius: 0 16px 16px 0;
+      font-size: 0.95rem;
+      color: #1d2633;
+    }
+
+    .insight strong {
+      color: #1e293b;
+    }
+
+    .insight a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #2563eb8c;
+    }
+
+    .insight a:hover {
+      border-bottom-style: solid;
+      color: #1d4ed8;
+    }
+
+    /* 特点清单——无图标，仅排版调整 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 0.3rem;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #f8f9fc;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      border: 1px solid #e9ecf2;
+      color: #2a2e3a;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 550;
+      color: #15171e;
+      margin-bottom: 0.25rem;
+    }
+
+    /* 场景段 */
+    .scenario-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .scenario-list li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+      border-bottom: 1px solid #ecf0f5;
+    }
+
+    .scenario-list li:last-child {
+      border-bottom: none;
+    }
+
+    .scenario-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0.2rem;
+      font-weight: 700;
+      color: #3b82f6;
+    }
+
+    /* FAQ 摘要 */
+    .faq-item {
+      margin-top: 1.5rem;
+    }
+
+    .faq-q {
+      font-weight: 550;
+      color: #1a1e2a;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-a {
+      color: #3d4250;
+      font-size: 0.95rem;
+      padding-left: 1.2rem;
+    }
+
+    .faq-a a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px dotted #2563eb8c;
+    }
+
+    .faq-a a:hover {
+      border-bottom-style: solid;
+      color: #1d4ed8;
+    }
+
+    /* 访问句（footer 氛围） */
+    .closing-note {
+      margin-top: 3rem;
+      text-align: center;
+      padding: 1.2rem 0 0.5rem;
+      font-size: 0.9rem;
+      color: #5b6270;
+      border-top: 1px solid #dfe3eb;
+    }
+
+    .closing-note a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .closing-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+      .hero-title {
+        font-size: 1.7rem;
+      }
+      .container {
+        padding: 1.8rem 1rem 3rem;
+      }
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+      .feature-grid {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <h1 class="hero-title">华体会 · 资料索引</h1>
+  <p class="hero-sub">信息整理 · 结构梳理 · 内容聚合</p>
+  <span class="hero-meta">索引编号 · 214ef61ac4cb64d3</span>
+</header>
+
+<main class="container">
+
+  <!-- 导语 + 文章标题（第一段） -->
+  <div class="card">
+    <p class="lead">从资料整理与信息索引的角度看，<strong>华体会</strong>所涉及的资源目录、内容节点及分类逻辑，值得用结构化方式重新梳理。以下是将零散素材重新切片、标注后的摘要，供后续参考与延伸查阅。</p>
+  </div>
+
+  <!-- 正文多段 —— 切入资料整理视角 -->
+  <div class="card">
+    <h2>素材分类与节点</h2>
+    <p>在初步素材中可提取出三类主要信息：品牌标识释义、常见关联场景、以及用户经常查阅的操作说明。通过对这些节点的层级标记，发现其核心内容围绕 <a href="https://detail-hth.com.cn">华体会</a> 这一名称展开，并延伸出多组平行资料块。</p>
+    <p>整理过程中采用二级目录+标签的索引方式，把高频字段（如名称、版本号、场景标签）单独列出，便于后续检索或交叉引用。目前已完成第一轮粗筛，覆盖率约七成。</p>
+  </div>
+
+  <!-- 特点（轻卡片网格） -->
+  <div class="card">
+    <h2>资料集关键特征</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>层级扁平</strong>
+        主要资料深度不超过三级，适合快速预览。
+      </div>
+      <div class="feature-item">
+        <strong>命名一致</strong>
+        关键字段采用相同大小写与分隔符，减少歧义。
+      </div>
+      <div class="feature-item">
+        <strong>可溯源</strong>
+        每条记录保留原始上下文，方便回溯。
+      </div>
+      <div class="feature-item">
+        <strong>轻标注</strong>
+        仅对明显冗余或缺失项添加备注，不干扰正文。
+      </div>
+    </div>
+  </div>
+
+  <!-- 引用提示块 -->
+  <div class="card">
+    <div class="insight">
+      <strong>◈ 索引提示</strong><br>
+      本批资料中，与 <a href="https://detail-hth.com.cn">华体会</a> 直接关联的条目占比超过六成，且多数位于目录前两层。建议在二次整理时优先处理这部分节点，可提高整体完整度。
+    </div>
+  </div>
+
+  <!-- 场景 —— 内容角度扩展 -->
+  <div class="card">
+    <h2>适用查阅场景（摘要）</h2>
+    <ul class="scenario-list">
+      <li>需要快速定位某一名称或术语的原始出处</li>
+      <li>对多条内容进行横向对比，确认版本或表述差异</li>
+      <li>搭建小型知识库时，作为初始分类与标签参考</li>
+      <li>批量检查链接或引用是否正确，避免信息断裂</li>
+    </ul>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="card">
+    <h2>FAQ 摘要</h2>
+    <div class="faq-item">
+      <div class="faq-q">问：资料索引中的编号有什么含义？</div>
+      <div class="faq-a">每个编号对应一次整理批次的前缀标记，用于区分不同时间或来源的素材组。例如本文使用的批次标记为 214ef61ac4cb64d3 。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">问：如何核对这些索引与来源的一致性？</div>
+      <div class="faq-a">建议对照原始页面或文档，重点关注名称字段与链接指向是否匹配。关于 <a href="https://detail-hth.com.cn">华体会</a> 的条目已先行校验，其余部分可逐步复核。</div>
+    </div>
+  </div>
+
+  <!-- 访问句（自然的引用） -->
+  <div class="closing-note">
+    以上索引基于当前可获取的资料整理而成，如需查阅原始信息源可参考 <a href="https://detail-hth.com.cn">华体会</a> 相关内容。
+  </div>
+
+</main>
+
+</body>
+</html>
